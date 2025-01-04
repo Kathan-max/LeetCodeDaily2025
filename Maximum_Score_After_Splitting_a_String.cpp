@@ -22,10 +22,32 @@ void init_code(){
     #endif
 }
 
+int maxScore(string s){
+    int ones = 0;
+    for(auto x:s){
+        if(x == '1'){
+            ones++;
+        }
+    }
+    int z = 0;  
+    int ans = 0;
+    for(int i=0;i<s.size()-1;i++){
+        if(s[i] == '1'){
+            ones--;
+        }else{
+            z++;
+        }
+        ans = max(ans , z + ones);
+    }
+
+    return ans;
+}
+
 int main(){
     init_code();
     string input;
-    cin >> input; // Reads "011101"
-    cout << "Input string: " << input << endl;
+    cin>>input;
+    int final_ans = maxScore(input);
+    cout<<final_ans<<endl;
     return 0;
 }
